@@ -11,7 +11,7 @@
 #import "KIFTestScenario.h"
 #import "KIFTestStep.h"
 #import "KIFTestLogger.h"
-
+#import "KIFJunitTestLogger.h"
 #import "NSFileManager-KIFAdditions.h"
 #import <QuartzCore/QuartzCore.h>
 #import <dlfcn.h>
@@ -141,8 +141,8 @@ static void releaseInstance()
     
     loggers = [[NSMutableArray alloc] init];
     [self registerLogger:[[[KIFTestLogger alloc] init] autorelease]];
-    
-    return self;    
+    [self registerLogger:[[[KIFJunitTestLogger alloc]init]autorelease]];
+    return self;
 }
 
 - (void)dealloc;
